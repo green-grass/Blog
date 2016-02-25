@@ -1,0 +1,14 @@
+{
+  "name": "phantomnet-resource",
+  "description": "AngularJS Resource factory with create/update support",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/green-grass/phantomnet-resource.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-uglify": "1.2.0",
+    "rimraf": "2.2.8"
+  }
+}

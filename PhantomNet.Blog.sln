@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{186106DA-012B-4204-B156-A6408F00DFC7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A38ADBCC-3C76-412E-8663-4F324DDEEE9B}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhantomNet.Blog", "src\PhantomNet.Blog\PhantomNet.Blog.xproj", "{EAEAF54C-5884-45E4-9EF1-5FC8D7574592}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhantomNet.Compozr", "..\..\Compozr\PhantomNet-Compozr\src\PhantomNet.Compozr\PhantomNet.Compozr.xproj", "{95D0ADD2-0983-4A0F-96F5-2BD350775584}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhantomNet.Core", "..\..\PhantomNet-Core\src\PhantomNet.Core\PhantomNet.Core.xproj", "{339FA9E2-4B6F-4B30-A8C2-C54D65B60D94}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhantomNet.RemoteFolder", "..\..\RemoteFolder\PhantomNet-RemoteFolder\src\PhantomNet.RemoteFolder\PhantomNet.RemoteFolder.xproj", "{1E1ED69C-918A-4877-85B0-4029D61C5AA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dependencies", "dependencies", "{09D7E111-7E51-451B-BE2A-76A2DFE5D590}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{41E87275-8FD3-42F5-9610-76887FE1C2DF}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhantomNet.Mvc", "..\..\PhantomNet-Core\src\PhantomNet.Mvc\PhantomNet.Mvc.xproj", "{813CB1D9-6A59-4EC8-B166-1C518D2E8516}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{1AFE9D9F-F48F-4953-90A7-E1E5A66FC96A}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhantomNet.Blog.Sample", "samples\PhantomNet.Blog.Sample\PhantomNet.Blog.Sample.xproj", "{E0A25B40-3E2F-4D0E-A509-D3B3BB070789}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAEAF54C-5884-45E4-9EF1-5FC8D7574592}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAEAF54C-5884-45E4-9EF1-5FC8D7574592}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAEAF54C-5884-45E4-9EF1-5FC8D7574592}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAEAF54C-5884-45E4-9EF1-5FC8D7574592}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95D0ADD2-0983-4A0F-96F5-2BD350775584}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95D0ADD2-0983-4A0F-96F5-2BD350775584}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95D0ADD2-0983-4A0F-96F5-2BD350775584}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95D0ADD2-0983-4A0F-96F5-2BD350775584}.Release|Any CPU.Build.0 = Release|Any CPU
+		{339FA9E2-4B6F-4B30-A8C2-C54D65B60D94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{339FA9E2-4B6F-4B30-A8C2-C54D65B60D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{339FA9E2-4B6F-4B30-A8C2-C54D65B60D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{339FA9E2-4B6F-4B30-A8C2-C54D65B60D94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E1ED69C-918A-4877-85B0-4029D61C5AA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E1ED69C-918A-4877-85B0-4029D61C5AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E1ED69C-918A-4877-85B0-4029D61C5AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E1ED69C-918A-4877-85B0-4029D61C5AA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{813CB1D9-6A59-4EC8-B166-1C518D2E8516}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{813CB1D9-6A59-4EC8-B166-1C518D2E8516}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{813CB1D9-6A59-4EC8-B166-1C518D2E8516}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{813CB1D9-6A59-4EC8-B166-1C518D2E8516}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0A25B40-3E2F-4D0E-A509-D3B3BB070789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0A25B40-3E2F-4D0E-A509-D3B3BB070789}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0A25B40-3E2F-4D0E-A509-D3B3BB070789}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0A25B40-3E2F-4D0E-A509-D3B3BB070789}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EAEAF54C-5884-45E4-9EF1-5FC8D7574592} = {186106DA-012B-4204-B156-A6408F00DFC7}
+		{95D0ADD2-0983-4A0F-96F5-2BD350775584} = {09D7E111-7E51-451B-BE2A-76A2DFE5D590}
+		{339FA9E2-4B6F-4B30-A8C2-C54D65B60D94} = {09D7E111-7E51-451B-BE2A-76A2DFE5D590}
+		{1E1ED69C-918A-4877-85B0-4029D61C5AA5} = {09D7E111-7E51-451B-BE2A-76A2DFE5D590}
+		{41E87275-8FD3-42F5-9610-76887FE1C2DF} = {186106DA-012B-4204-B156-A6408F00DFC7}
+		{813CB1D9-6A59-4EC8-B166-1C518D2E8516} = {09D7E111-7E51-451B-BE2A-76A2DFE5D590}
+		{E0A25B40-3E2F-4D0E-A509-D3B3BB070789} = {1AFE9D9F-F48F-4953-90A7-E1E5A66FC96A}
+	EndGlobalSection
+EndGlobal

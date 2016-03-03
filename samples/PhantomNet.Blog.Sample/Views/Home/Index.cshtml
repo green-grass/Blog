@@ -4,72 +4,54 @@
 
 <h2>Remote Folder</h2>
 
-Upload on form submit or button click
-<form ng-app="fileUpload" ng-controller="MyCtrl" name="form">
-    Single Image with validations
-    <div class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
-         ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
-         ngf-resize="{width: 100, height: 100}">Select</div>
-    Multiple files
-    <div class="button" ngf-select ng-model="files" ngf-multiple="true">Select</div>
-    Drop files: <div ngf-drop ng-model="files" class="drop-box">Drop</div>
-    <button type="submit" ng-click="submit()">submit</button>
-</form>
-
-Upload right away after file selection:
-<div class="button" ngf-select="upload($file)">Upload on file select</div>
-<div class="button" ngf-select="uploadFiles($files)" multiple="multiple">Upload on file select</div>
-  Drop File:
-<div ngf-drop="uploadFiles($files)" class="drop-box"
-     ngf-drag-over-class="'dragover'" ngf-multiple="true"
-     ngf-pattern="'image/*,application/pdf'">Drop Images or PDFs files here</div>
-<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
-
-Image thumbnail: <img ngf-thumbnail="file || '/thumb.jpg'">
-Audio preview: <audio controls ngf-src="file"></audio>
-Video preview: <video controls ngf-src="file"></video>
+<div class="remote-folder"></div>
 
 @section scripts {
+    <script src="~/lib/modernizr/modernizr.js"></script>
     <script src="~/lib/angular/angular.js"></script>
-    <script src="~/lib/ng-file-upload-shim/ng-file-upload-shim.js"></script>
-    <script src="~/lib/ng-file-upload/ng-file-upload.js"></script>
+    @*<script src="~/lib/ng-file-upload-shim/ng-file-upload-shim.js"></script>
+        <script src="~/lib/ng-file-upload/ng-file-upload.js"></script>*@
+    <script src="~/lib/phantomnet-inheritance/dist/phantomnet-inheritance.js"></script>
 
     <script>
-        //inject directives and services.
-        var app = angular.module('fileUpload', ['ngFileUpload']);
+        window.GG = window.PN;
 
-        app.controller('MyCtrl', ['$scope', 'Upload', function ($scope, Upload) {
-            // upload later on form submit or something similar
-            $scope.submit = function() {
-              if ($scope.form.file.$valid && $scope.file) {
-                $scope.upload($scope.file);
-              }
-            };
-
-            // upload on file select or drop
-            $scope.upload = function (file) {
-                Upload.upload({
-                    url: 'upload/url',
-                    data: {file: file, 'username': $scope.username}
-                }).then(function (resp) {
-                    console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-                }, function (resp) {
-                    console.log('Error status: ' + resp.status);
-                }, function (evt) {
-                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                    console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-                });
-            };
-            // for multiple files:
-            $scope.uploadFiles = function (files) {
-              if (files && files.length) {
-                for (var i = 0; i < files.length; i++) {
-                  Upload.upload({..., data: {file: files[i]}, ...})...;
-                }
-                // or send them all together for HTML5 browsers:
-                Upload.upload({..., data: {file: files}, ...})...;
-              }
+        var _unicode = "áàảãạăắằẳẵặâấầẩẫậéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẪẬÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴđĐ",
+        _ascii = "aaaaaaaaaaaaaaaaaeeeeeeeeeeeiiiiiooooooooooooooooouuuuuuuuuuuyyyyyAAAAAAAAAAAAAAAAAEEEEEEEEEEEIIIIIOOOOOOOOOOOOOOOOOUUUUUUUUUUUYYYYYdD";
+        GG.toAscii = function (source) {
+            for (var i = 0; i < _unicode.length; i++) {
+                var regexp = new RegExp(_unicode.substr(i, 1), "g");
+                source = source.replace(regexp, _ascii.substr(i, 1));
             }
-        }]);
+            return source;
+        };
+
+        GG.toUrlFriendly = function (source) {
+            source = GG.toAscii(source).trim().toLowerCase();
+            source = source.replace(/ /g, "-");
+            source = source.replace(/&nbsp;/g, "-");
+            source = source.replace(/[^0-9a-z-]/g, "");
+            while (source.indexOf("--") > -1) {
+                source = source.replace(/--/g, "-");
+            }
+            return source;
+        };
+    </script>
+
+    <script src="~/js/remote-folder.js"></script>
+
+    <script>
+        $(function () {
+
+            var options = {
+                listUrl: '/RemoteFolder/ImageList',
+                uploadUrl: '/RemoteFolder/UploadImage',
+                renameUrl: '/RemoteFolder/RenameImage',
+                deleteUrl: '/RemoteFolder/DeleteImage',
+                predefinedFileNames: ['banner', 'list']
+            };
+            new GG.Components.RemoteFolder($('.remote-folder'), options);
+
+        });
     </script>
 }

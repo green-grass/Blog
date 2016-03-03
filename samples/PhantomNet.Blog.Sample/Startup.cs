@@ -57,6 +57,8 @@ namespace PhantomNet.Blog.Sample
 
             services.AddScoped<StringProcessor>();
             services.AddScoped(typeof(RemoteImageFolderService<>));
+
+            services.AddRemoteFolder();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

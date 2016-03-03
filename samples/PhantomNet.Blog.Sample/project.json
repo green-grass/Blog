@@ -1,4 +1,4 @@
-﻿{
+{
   "userSecretsId": "aspnet5-PhantomNet.Blog.Sample-edb16dc2-0312-4990-8ab1-8a1b8c2278f4",
   "version": "1.0.0-*",
   "compilationOptions": {
@@ -25,7 +25,8 @@
     "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc1-final",
-    "PhantomNet.Blog": "1.0.0-*"
+    "PhantomNet.Blog": "1.0.0-*",
+    "PhantomNet.RemoteFolder": "1.0.0-*"
   },
 
   "commands": {

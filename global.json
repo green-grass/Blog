@@ -2,7 +2,9 @@
   "projects": [
     "src",
     "test",
+    "src/services",
     "../../PhantomNet-Core/src",
+    "../../PhantomNet-Entities/src",
     "../../RemoteFolder/PhantomNet-RemoteFolder/src",
     "../../Compozr/PhantomNet-Compozr/src"
   ],

@@ -1,6 +1,6 @@
 ﻿{
   "version": "1.0.0-*",
-  "description": "PhantomNet.Blog Class Library",
+  "description": "PhantomNet.Blog.Logic Class Library",
   "authors": [ "minhnguyen" ],
   "tags": [ "" ],
   "projectUrl": "",
@@ -19,6 +19,9 @@
     }
   },
   "dependencies": {
-    "PhantomNet.Compozr": "1.0.0-*"
+    "PhantomNet.Entities": "1.0.2-*"
+  },
+  "namedResource": {
+    "PhantomNet.Blog.Resources": "Resources.resx"
   }
 }

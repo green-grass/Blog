@@ -50,3 +50,7 @@ textarea {
 .remote-folder .progress.pull-right {
   width: 24px;
 }
+
+.remote-folder img {
+    max-height: 50px;
+}

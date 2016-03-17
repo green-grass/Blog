@@ -7,10 +7,10 @@
 
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>eaeaf54c-5884-45e4-9ef1-5fc8d7574592</ProjectGuid>
-    <RootNamespace>PhantomNet.Blog</RootNamespace>
-    <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">..\..\artifacts\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
-    <OutputPath Condition="'$(OutputPath)'=='' ">..\..\artifacts\bin\$(MSBuildProjectName)\</OutputPath>
+    <ProjectGuid>47948d0c-5134-4040-8058-c098ae466729</ProjectGuid>
+    <RootNamespace>PhantomNet.Blog.EntityFramework</RootNamespace>
+    <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">..\..\..\artifacts\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
+    <OutputPath Condition="'$(OutputPath)'=='' ">..\..\..\artifacts\bin\$(MSBuildProjectName)\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup>

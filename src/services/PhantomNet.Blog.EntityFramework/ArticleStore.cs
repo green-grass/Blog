@@ -7,33 +7,34 @@ using PhantomNet.Entities.EntityFramework;
 
 namespace PhantomNet.Blog.EntityFramework
 {
-    public class ArticleStore<TArticle> : ArticleStore<TArticle, DbContext>
-        where TArticle : Article<string>
-    {
-        public ArticleStore(DbContext context, BlogErrorDescriber errors = null) : base(context, errors) { }
-    }
-
-    public class ArticleStore<TArticle, TContext> : ArticleStore<TArticle, TContext, string>
-        where TArticle : Article<string>
+    public class ArticleStore<TArticle, TCategory, TBlogger, TContext, TModuleMarker>
+        : ArticleStore<TArticle, TCategory, TBlogger, TContext, int, TModuleMarker>
+        where TArticle : Article<TArticle, TCategory, TBlogger, int>
+        where TCategory : Category<TArticle, TCategory, TBlogger, int>
+        where TBlogger : Blogger<TArticle, TCategory, TBlogger, int>
         where TContext : DbContext
+        where TModuleMarker : IBlogModuleMarker
     {
         public ArticleStore(TContext context, BlogErrorDescriber errors = null) : base(context, errors) { }
     }
 
-    public class ArticleStore<TArticle, TContext, TKey> :
-        QueryableEntityStoreBase<TArticle, TContext, TKey>,
-        IQueryableArticleStore<TArticle>,
-        IEntityStoreMarker<TArticle, TContext, TKey>,
-        ITimeTrackedEntityStoreMarker<TArticle, TContext, TKey>,
-        ICodeBasedEntityStoreMarker<TArticle, TContext, TKey>
-        where TArticle : Article<TKey>
+    public class ArticleStore<TArticle, TCategory, TBlogger, TContext, TKey, TModuleMarker>
+        : QueryableEntityStoreBase<TArticle, TContext, TKey>,
+          IQueryableArticleStore<TArticle, TModuleMarker>,
+          IQueryableEntityStoreMarker<TArticle, TContext, TKey>,
+          IQueryableTimeTrackedEntityStoreMarker<TArticle, TContext, TKey>,
+          IActivatableEntityStoreMarker<TArticle, TContext, TKey>,
+          IQueryableCodeBasedEntityStoreMarker<TArticle, TContext, TKey>
+        where TArticle : Article<TArticle, TCategory, TBlogger, TKey>
+        where TCategory : Category<TArticle, TCategory, TBlogger, TKey>
+        where TBlogger : Blogger<TArticle, TCategory, TBlogger, TKey>
         where TContext : DbContext
         where TKey : IEquatable<TKey>
+        where TModuleMarker : IBlogModuleMarker
     {
         #region Constructors
 
-        public ArticleStore(TContext context, BlogErrorDescriber errors = null)
-            : base(context)
+        public ArticleStore(TContext context, BlogErrorDescriber errors = null) : base(context)
         {
             ErrorDescriber = errors ?? new BlogErrorDescriber();
         }
@@ -73,32 +74,32 @@ namespace PhantomNet.Blog.EntityFramework
             return this.FindEntityByIdAsync<TArticle, TContext, TKey, T>(id, cancellationToken);
         }
 
-        public virtual Task<string> GetIdAsync(TArticle article, CancellationToken cancellationToken)
-        {
-            return this.GetEntityIdAsync(article, cancellationToken);
-        }
-
         public virtual IQueryable<TArticle> Filter(IQueryable<TArticle> query, string filter)
         {
-            // TODO:: Revise all properties
             return this.FilterEntities(query, filter,
-                directFilter: () => query.Where(x => x.Title.Contains(filter) ||
-                                                     x.UrlFriendlyTitle.Contains(filter) ||
-                                                     x.ShortContent.Contains(filter) ||
-                                                     x.Content.Contains(filter)));
+                filter: q => q.Where(x => x.Author.Contains(filter) ||
+                                          x.SourceUrl.Contains(filter) ||
+                                          x.Title.Contains(filter) ||
+                                          x.UrlFriendlyTitle.Contains(filter) ||
+                                          x.ShortContent.Contains(filter) ||
+                                          x.Content.Contains(filter) ||
+                                          x.Tags.Contains(filter) ||
+                                          x.Series.Contains(filter) ||
+                                          x.DescriptionMeta.Contains(filter) ||
+                                          x.KeywordsMeta.Contains(filter) ||
+                                          x.Filters.Contains(filter)));
         }
 
         public virtual IQueryable<TArticle> PreSort(IQueryable<TArticle> query)
         {
-            return this.PreSortEntities(query,
-                directPreSort: () => query);
+            return this.PreSortEntities(query, sort: q => q);
         }
 
         public virtual IQueryable<TArticle> DefaultSort(IQueryable<TArticle> query)
         {
             return this.DefaultSortEntities(query,
-                directDefaultSort: () => query.OrderByDescending(x => x.PublishDate),
-                directOrderedDefaultSort: orderedQuery => orderedQuery.ThenByDescending(x => x.PublishDate));
+                sort: q => q.OrderByDescending(x => x.PublishDate),
+                orderedSort: q => q.ThenByDescending(x => x.PublishDate));
         }
 
         public virtual Task<int> CountAsync(IQueryable<TArticle> articles, CancellationToken cancellationToken)
@@ -115,14 +116,13 @@ namespace PhantomNet.Blog.EntityFramework
             return this.FindLatestEntityAsync(cancellationToken);
         }
 
-        public virtual Task SetDataCreateDateAsync(TArticle article, DateTime dataCreateDate, CancellationToken cancellationToken)
-        {
-            return this.SetEntityDataCreateDateAsync(article, dataCreateDate, cancellationToken);
-        }
+        #endregion
 
-        public virtual Task SetDataLastModifyDateAsync(TArticle article, DateTime dataLastModifyDate, CancellationToken cancellationToken)
+        #region ActivatableEntity
+
+        public IQueryable<TArticle> FilterByIsActive(IQueryable<TArticle> query, bool? isActive)
         {
-            return this.SetEntityDataLastModifyDateAsync(article, dataLastModifyDate, cancellationToken);
+            return this.FilterEntitiesByIsActive(query, isActive);
         }
 
         #endregion
@@ -131,17 +131,17 @@ namespace PhantomNet.Blog.EntityFramework
 
         public virtual Task<TArticle> FindByCodeAsync(string normalizedCode, CancellationToken cancellationToken)
         {
-            return this.FindEntityByCodeAsync(normalizedCode, cancellationToken, x => x.UrlFriendlyTitle, null);
+            return this.FindEntityByCodeAsync(normalizedCode, x => x.UrlFriendlyTitle, cancellationToken);
         }
 
-        public virtual Task<string> GetCodeAsync(TArticle article, CancellationToken cancellationToken)
-        {
-            return this.GetEntityCodeAsync(article, cancellationToken, x => x.UrlFriendlyTitle, null);
-        }
 
-        public virtual Task SetCodeAsync(TArticle article, string code, CancellationToken cancellationToken)
+        #endregion
+
+        #region Article
+
+        public virtual Task<TArticle> FindByUrlFriendlyTitleAsync(string urlFriendlyTitle, CancellationToken cancellationToken)
         {
-            return this.SetEntityCodeAsync(article, code, cancellationToken, x => x.UrlFriendlyTitle, null);
+            return FindByCodeAsync(urlFriendlyTitle, cancellationToken);
         }
 
         #endregion

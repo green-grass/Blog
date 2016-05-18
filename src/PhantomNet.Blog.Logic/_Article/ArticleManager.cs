@@ -1,47 +1,57 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.OptionsModel;
 using PhantomNet.Entities;
 
 namespace PhantomNet.Blog
 {
-    public class ArticleManager<TArticle> : ArticleManager<TArticle, ArticleManager<TArticle>>
+    public class ArticleManager<TArticle, TModuleMarker> : ArticleManager<TArticle, ArticleManager<TArticle, TModuleMarker>, TModuleMarker>
         where TArticle : class
+        where TModuleMarker : IBlogModuleMarker
     {
         public ArticleManager(
-            IArticleStore<TArticle> store,
-            IEnumerable<IArticleValidator<TArticle>> articleValidators,
+            IArticleStore<TArticle, TModuleMarker> store, IArticleAccessor<TArticle> articleAccessor,
+            IEnumerable<IEntityValidator<TArticle, ArticleManager<TArticle, TModuleMarker>>> articleValidators,
             ILookupNormalizer keyNormalizer,
+            IEntityCodeGenerator<TArticle, ArticleManager<TArticle, TModuleMarker>> codeGenerator,
             BlogErrorDescriber errors,
-            ILogger<ArticleManager<TArticle>> logger) :
-            base(store, articleValidators, keyNormalizer, errors, logger)
+            IServiceProvider services,
+            ILogger<ArticleManager<TArticle, TModuleMarker>> logger)
+            : base(store, articleAccessor, articleValidators, keyNormalizer, codeGenerator, errors, services, logger)
         { }
     }
 
-    public class ArticleManager<TArticle, TArticleManager> :
-        EntityManagerBase<TArticle, TArticleManager>,
-        IEntityManager<TArticle>,
-        ITimeTrackedEntityManager<TArticle>,
-        ICodeBasedEntityManager<TArticle>
+    public class ArticleManager<TArticle, TArticleManager, TModuleMarker>
+        : EntityManagerBase<TArticle, TArticleManager>,
+          IEntityManager<TArticle>,
+          ITimeTrackedEntityManager<TArticle>,
+          IActivatableEntityManager<TArticle>,
+          ICodeBasedEntityManager<TArticle>
         where TArticle : class
-        where TArticleManager : ArticleManager<TArticle, TArticleManager>
+        where TArticleManager : ArticleManager<TArticle, TArticleManager, TModuleMarker>
+        where TModuleMarker : IBlogModuleMarker
     {
         public ArticleManager(
-            IArticleStore<TArticle> store,
-            IEnumerable<IArticleValidator<TArticle, TArticleManager>> articleValidators,
+            IArticleStore<TArticle, TModuleMarker> store, IArticleAccessor<TArticle> articleAccessor,
+            IEnumerable<IEntityValidator<TArticle, TArticleManager>> articleValidators,
             ILookupNormalizer keyNormalizer,
+            IEntityCodeGenerator<TArticle, TArticleManager> codeGenerator,
             BlogErrorDescriber errors,
-            ILogger<ArticleManager<TArticle, TArticleManager>> logger) :
-            base(store,
-                 articleValidators,
-                 keyNormalizer ?? new UpperInvariantLookupNormalizer(),
-                 null,
-                 errors ?? new BlogErrorDescriber(),
-                 logger)
+            IServiceProvider services,
+            ILogger<ArticleManager<TArticle, TArticleManager, TModuleMarker>> logger)
+            : base(store, articleAccessor,
+                   articleValidators,
+                   keyNormalizer ?? new LowerInvariantLookupNormalizer(),
+                   codeGenerator ?? new UrlFriendlyCodeGenerator<TArticle, TArticleManager>(articleAccessor, services.GetRequiredService<IOptions<UrlFriendlyCodeGeneratorOptions>>()),
+                   errors ?? new BlogErrorDescriber(),
+                   logger)
         { }
 
-        protected virtual IArticleStore<TArticle> ArticleStore => Store as IArticleStore<TArticle>;
+        protected virtual IArticleStore<TArticle, TModuleMarker> ArticleStore => Store as IArticleStore<TArticle, TModuleMarker>;
 
         public virtual IQueryable<TArticle> Articles => Entities;
 
@@ -65,10 +75,10 @@ namespace PhantomNet.Blog
             return SearchEntitiesAsync(search, pageNumber, pageSize, sort, reverse);
         }
 
-        //public virtual Task<EntityQueryResult<TArticle>> FilterAsync()
-        //{
-
-        //}
+        public Task<EntityQueryResult<TArticle>> SearchAsync(bool? isActive, string search, int? pageNumber, int? pageSize, string sort, bool reverse)
+        {
+            return SearchEntitiesAsync(isActive, search, pageNumber, pageSize, sort, reverse);
+        }
 
         public virtual Task<TArticle> FindByIdAsync(string id)
         {
@@ -85,14 +95,9 @@ namespace PhantomNet.Blog
             return FindEntityByCodeAsync(code);
         }
 
-        public virtual Task<string> GetIdAsync(TArticle article)
+        public virtual Task<TArticle> FindByUrlFriendlyTitleAsync(string urlFriendlyTitle)
         {
-            return GetEntityIdAsync(article);
-        }
-
-        public virtual Task<string> GetCodeAsync(TArticle article)
-        {
-            return GetEntityCodeAsync(article);
+            return FindByCodeAsync(urlFriendlyTitle);
         }
     }
 }

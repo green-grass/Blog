@@ -69,6 +69,24 @@ namespace PhantomNet.Blog {
         }
         
         /// <summary>
+        ///    Looks up a localized string similar to Blogger URL friendly pen name &apos;{0}&apos; is already taken..
+        /// </summary>
+        internal static string DuplicateBloggerUrlFriendlyPenName {
+            get {
+                return ResourceManager.GetString("DuplicateBloggerUrlFriendlyPenName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to Category URL friendly name &apos;{0}&apos; is already taken..
+        /// </summary>
+        internal static string DuplicateCategoryUrlFriendlyName {
+            get {
+                return ResourceManager.GetString("DuplicateCategoryUrlFriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Looks up a localized string similar to Article URL friendly title &apos;{0}&apos; is invalid..
         /// </summary>
         internal static string InvalidArticleUrlFriendlyTitle {
@@ -78,7 +96,25 @@ namespace PhantomNet.Blog {
         }
         
         /// <summary>
-        ///    Looks up a localized string similar to Type {0} must derive from {1}&lt;{2}&gt;..
+        ///    Looks up a localized string similar to Blogger URL friendly pen name &apos;{0}&apos; is invalid..
+        /// </summary>
+        internal static string InvalidBloggerUrlFriendlyPenName {
+            get {
+                return ResourceManager.GetString("InvalidBloggerUrlFriendlyPenName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to Category URL friendly name &apos;{0}&apos; is invalid..
+        /// </summary>
+        internal static string InvalidCategoryUrlFriendlyName {
+            get {
+                return ResourceManager.GetString("InvalidCategoryUrlFriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to Type {0} must derive from {1}&lt;{2}, {3}&gt;..
         /// </summary>
         internal static string InvalidManagerType {
             get {

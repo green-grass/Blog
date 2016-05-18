@@ -5,27 +5,22 @@ using PhantomNet.Entities;
 
 namespace PhantomNet.Blog
 {
-    public class ArticleValidator<TArticle> :
-        ArticleValidator<TArticle, ArticleManager<TArticle>>,
-        IArticleValidator<TArticle>
-        where TArticle : class
-    {
-        public ArticleValidator(BlogErrorDescriber errors = null) : base(errors) { }
-    }
-
-    public class ArticleValidator<TArticle, TArticleManager> :
-        IArticleValidator<TArticle, TArticleManager>
+    public class ArticleValidator<TArticle, TArticleManager>
+        : IEntityValidator<TArticle, TArticleManager>
         where TArticle : class
         where TArticleManager : class,
                                 IEntityManager<TArticle>,
                                 ICodeBasedEntityManager<TArticle>
     {
-        public ArticleValidator(BlogErrorDescriber errors = null)
+        public ArticleValidator(IArticleAccessor<TArticle> articleAccessor, BlogErrorDescriber errors = null)
         {
+            ArticleAccessor = articleAccessor;
             ErrorDescriber = errors ?? new BlogErrorDescriber();
         }
 
         private BlogErrorDescriber ErrorDescriber { get; set; }
+
+        protected IArticleAccessor<TArticle> ArticleAccessor { get; }
 
         public virtual async Task<EntityResult> ValidateAsync(TArticleManager manager, TArticle article)
         {
@@ -52,7 +47,7 @@ namespace PhantomNet.Blog
 
         protected virtual async Task ValidateUrlFriendlyTitle(TArticleManager manager, TArticle article, List<EntityError> errors)
         {
-            var urlFriendlyTitle = await manager.GetCodeAsync(article);
+            var urlFriendlyTitle = ArticleAccessor.GetCode(article);
             if (string.IsNullOrWhiteSpace(urlFriendlyTitle))
             {
                 errors.Add(ErrorDescriber.InvalidArticleUrlFriendlyTitle(urlFriendlyTitle));
@@ -61,7 +56,7 @@ namespace PhantomNet.Blog
             {
                 var owner = await manager.FindByCodeAsync(urlFriendlyTitle);
                 if (owner != null &&
-                    !string.Equals(await manager.GetIdAsync(owner), await manager.GetIdAsync(article)))
+                    !string.Equals(ArticleAccessor.GetId(owner), ArticleAccessor.GetId(article)))
                 {
                     errors.Add(ErrorDescriber.DuplicateArticleUrlFriendlyTitle(urlFriendlyTitle));
                 }

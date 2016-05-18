@@ -19,5 +19,37 @@ namespace PhantomNet.Blog
                 Description = string.Format(Resources.DuplicateArticleUrlFriendlyTitle, articleUrlFriendlyTitle)
             };
         }
+
+        public virtual EntityError InvalidCategoryUrlFriendlyName(string categoryUrlFriendlyName)
+        {
+            return new EntityError {
+                Code = nameof(InvalidCategoryUrlFriendlyName),
+                Description = string.Format(Resources.InvalidCategoryUrlFriendlyName, categoryUrlFriendlyName)
+            };
+        }
+
+        public virtual EntityError DuplicateCategoryUrlFriendlyName(string categoryUrlFriendlyName)
+        {
+            return new EntityError {
+                Code = nameof(DuplicateCategoryUrlFriendlyName),
+                Description = string.Format(Resources.DuplicateCategoryUrlFriendlyName, categoryUrlFriendlyName)
+            };
+        }
+
+        public virtual EntityError InvalidBloggerUrlFriendlyPenName(string bloggerUrlFriendlyPenName)
+        {
+            return new EntityError {
+                Code = nameof(InvalidBloggerUrlFriendlyPenName),
+                Description = string.Format(Resources.InvalidBloggerUrlFriendlyPenName, bloggerUrlFriendlyPenName)
+            };
+        }
+
+        public virtual EntityError DuplicateBloggerUrlFriendlyPenName(string bloggerUrlFriendlyPenName)
+        {
+            return new EntityError {
+                Code = nameof(DuplicateBloggerUrlFriendlyPenName),
+                Description = string.Format(Resources.DuplicateBloggerUrlFriendlyPenName, bloggerUrlFriendlyPenName)
+            };
+        }
     }
 }

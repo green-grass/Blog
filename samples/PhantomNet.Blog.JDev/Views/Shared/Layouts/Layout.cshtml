@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "Layouts/Empty";
+}
+
+@section head {
+    @RenderSection("head", required: false)
+}
+
+@RenderBody()
+
+@section scripts {
+    @RenderSection("scripts", required: false)
+}

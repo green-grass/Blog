@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace PhantomNet.Blog
+﻿namespace PhantomNet.Blog
 {
-    public class BlogOptions
-    {
-    }
+    public class BlogOptions { }
 }

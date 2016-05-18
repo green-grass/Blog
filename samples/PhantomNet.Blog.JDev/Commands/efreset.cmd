@@ -1,0 +1,1 @@
+call efreset-blog.cmd

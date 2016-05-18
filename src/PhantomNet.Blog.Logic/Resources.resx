@@ -120,10 +120,22 @@
   <data name="DuplicateArticleUrlFriendlyTitle" xml:space="preserve">
     <value>Article URL friendly title '{0}' is already taken.</value>
   </data>
+  <data name="DuplicateBloggerUrlFriendlyPenName" xml:space="preserve">
+    <value>Blogger URL friendly pen name '{0}' is already taken.</value>
+  </data>
+  <data name="DuplicateCategoryUrlFriendlyName" xml:space="preserve">
+    <value>Category URL friendly name '{0}' is already taken.</value>
+  </data>
   <data name="InvalidArticleUrlFriendlyTitle" xml:space="preserve">
     <value>Article URL friendly title '{0}' is invalid.</value>
   </data>
+  <data name="InvalidBloggerUrlFriendlyPenName" xml:space="preserve">
+    <value>Blogger URL friendly pen name '{0}' is invalid.</value>
+  </data>
+  <data name="InvalidCategoryUrlFriendlyName" xml:space="preserve">
+    <value>Category URL friendly name '{0}' is invalid.</value>
+  </data>
   <data name="InvalidManagerType" xml:space="preserve">
-    <value>Type {0} must derive from {1}&lt;{2}&gt;.</value>
+    <value>Type {0} must derive from {1}&lt;{2}, {3}&gt;.</value>
   </data>
 </root>

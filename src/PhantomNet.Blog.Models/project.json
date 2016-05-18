@@ -18,6 +18,7 @@
     }
   },
   "dependencies": {
+    "PhantomNet.Blog.Logic": "1.0.0-*",
     "PhantomNet.Entities.EntityMarkers": "1.0.2-*"
   }
 }

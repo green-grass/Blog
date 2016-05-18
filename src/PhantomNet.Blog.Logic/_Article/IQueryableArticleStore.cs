@@ -3,10 +3,11 @@ using PhantomNet.Entities;
 
 namespace PhantomNet.Blog
 {
-    public interface IQueryableArticleStore<TArticle> :
-        IQueryableEntityStore<TArticle>,
-        IArticleStore<TArticle>
+    public interface IQueryableArticleStore<TArticle, TModuleMarker>
+        : IQueryableEntityStore<TArticle>,
+          IArticleStore<TArticle, TModuleMarker>
         where TArticle : class
+        where TModuleMarker : IBlogModuleMarker
     {
         IQueryable<TArticle> Articles { get; }
     }

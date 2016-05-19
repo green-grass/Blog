@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using PhantomNet.Entities.EntityMarkers;
+using PhantomNet.Entities;
 
 namespace PhantomNet.Blog
 {

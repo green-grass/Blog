@@ -1,16 +1,24 @@
 ﻿using System;
-using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace PhantomNet.Blog.EntityFramework
 {
-    public class BlogDbContext : BlogDbContext<Article, Category, Blogger> { }
+    public class BlogDbContext : BlogDbContext<Article, Category, Blogger>
+    {
+        public BlogDbContext(DbContextOptions options) : base(options) { }
+
+        protected BlogDbContext() { }
+    }
 
     public class BlogDbContext<TArticle, TCategory, TBlogger> : BlogDbContext<TArticle, TCategory, TBlogger, int>
         where TArticle : Article<TArticle, TCategory, TBlogger, int>
         where TCategory : Category<TArticle, TCategory, TBlogger, int>
         where TBlogger : Blogger<TArticle, TCategory, TBlogger, int>
-    { }
+    {
+        public BlogDbContext(DbContextOptions options) : base(options) { }
+
+        protected BlogDbContext() { }
+    }
 
     public class BlogDbContext<TArticle, TCategory, TBlogger, TKey> : DbContext
         where TArticle : Article<TArticle, TCategory, TBlogger, TKey>
@@ -20,11 +28,7 @@ namespace PhantomNet.Blog.EntityFramework
     {
         public BlogDbContext(DbContextOptions options) : base(options) { }
 
-        public BlogDbContext(IServiceProvider serviceProvider) : base(serviceProvider) { }
-
-        public BlogDbContext(IServiceProvider serviceProvider, DbContextOptions options) : base(serviceProvider, options) { }
-
-        public BlogDbContext() { }
+        protected BlogDbContext() { }
 
         public string DefaultSchema { get; }
             = nameof(BlogDbContext<TArticle, TCategory, TBlogger, TKey>).Replace("DbContext", string.Empty);

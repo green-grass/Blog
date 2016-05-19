@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DB1086DB-C0CD-4681-B8F2-07321C69D0A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5E530D8E-F34B-4DA9-ACFA-4203406BDF54}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhantomNet.Blog.Logic", "src\PhantomNet.Blog.Logic\PhantomNet.Blog.Logic.xproj", "{D262290A-FCBF-4CD0-B38B-D3870C42F3FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dependencies", "dependencies", "{64E505AB-C109-42C3-A9FB-DC3A1BDF7CD7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{387EF890-72FA-47CC-BFF0-CD0EF40C7911}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{1ABAF28A-B37F-4FC2-92B5-4F5F4BF3C2C8}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhantomNet.Blog.Models", "src\PhantomNet.Blog.Models\PhantomNet.Blog.Models.xproj", "{E8CDE86D-501D-4724-B635-F9515F923420}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhantomNet.Blog.EntityFramework", "src\services\PhantomNet.Blog.EntityFramework\PhantomNet.Blog.EntityFramework.xproj", "{99153173-211E-4B3E-9B70-5DA5BB2B1CCB}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhantomNet.Blog.Mvc", "src\services\PhantomNet.Blog.Mvc\PhantomNet.Blog.Mvc.xproj", "{178FB894-046D-42B3-9974-184DBF58A024}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhantomNet.Core", "..\..\PhantomNet-Core\src\PhantomNet.Core\PhantomNet.Core.xproj", "{4CF2E321-D135-486C-9AEF-47DB5A5F9C83}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhantomNet.Entities", "..\..\PhantomNet-Entities\src\PhantomNet.Entities\PhantomNet.Entities.xproj", "{A130E586-507C-4482-91F3-8CD09205B241}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhantomNet.Entities.EntityMarkers", "..\..\PhantomNet-Entities\src\PhantomNet.Entities.EntityMarkers\PhantomNet.Entities.EntityMarkers.xproj", "{6BC0163A-C077-4166-A92A-480F15D99F4B}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PhantomNet.Entities.EntityFramework", "..\..\PhantomNet-Entities\src\services\PhantomNet.Entities.EntityFramework\PhantomNet.Entities.EntityFramework.xproj", "{165F1F6A-3A85-4180-8371-FB04DB1C5CBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D262290A-FCBF-4CD0-B38B-D3870C42F3FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D262290A-FCBF-4CD0-B38B-D3870C42F3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D262290A-FCBF-4CD0-B38B-D3870C42F3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D262290A-FCBF-4CD0-B38B-D3870C42F3FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8CDE86D-501D-4724-B635-F9515F923420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8CDE86D-501D-4724-B635-F9515F923420}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8CDE86D-501D-4724-B635-F9515F923420}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8CDE86D-501D-4724-B635-F9515F923420}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99153173-211E-4B3E-9B70-5DA5BB2B1CCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99153173-211E-4B3E-9B70-5DA5BB2B1CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99153173-211E-4B3E-9B70-5DA5BB2B1CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99153173-211E-4B3E-9B70-5DA5BB2B1CCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{178FB894-046D-42B3-9974-184DBF58A024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{178FB894-046D-42B3-9974-184DBF58A024}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{178FB894-046D-42B3-9974-184DBF58A024}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{178FB894-046D-42B3-9974-184DBF58A024}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CF2E321-D135-486C-9AEF-47DB5A5F9C83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CF2E321-D135-486C-9AEF-47DB5A5F9C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CF2E321-D135-486C-9AEF-47DB5A5F9C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CF2E321-D135-486C-9AEF-47DB5A5F9C83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A130E586-507C-4482-91F3-8CD09205B241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A130E586-507C-4482-91F3-8CD09205B241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A130E586-507C-4482-91F3-8CD09205B241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A130E586-507C-4482-91F3-8CD09205B241}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BC0163A-C077-4166-A92A-480F15D99F4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BC0163A-C077-4166-A92A-480F15D99F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BC0163A-C077-4166-A92A-480F15D99F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BC0163A-C077-4166-A92A-480F15D99F4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{165F1F6A-3A85-4180-8371-FB04DB1C5CBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{165F1F6A-3A85-4180-8371-FB04DB1C5CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{165F1F6A-3A85-4180-8371-FB04DB1C5CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{165F1F6A-3A85-4180-8371-FB04DB1C5CBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D262290A-FCBF-4CD0-B38B-D3870C42F3FB} = {DB1086DB-C0CD-4681-B8F2-07321C69D0A9}
+		{1ABAF28A-B37F-4FC2-92B5-4F5F4BF3C2C8} = {DB1086DB-C0CD-4681-B8F2-07321C69D0A9}
+		{E8CDE86D-501D-4724-B635-F9515F923420} = {DB1086DB-C0CD-4681-B8F2-07321C69D0A9}
+		{99153173-211E-4B3E-9B70-5DA5BB2B1CCB} = {1ABAF28A-B37F-4FC2-92B5-4F5F4BF3C2C8}
+		{178FB894-046D-42B3-9974-184DBF58A024} = {1ABAF28A-B37F-4FC2-92B5-4F5F4BF3C2C8}
+		{4CF2E321-D135-486C-9AEF-47DB5A5F9C83} = {64E505AB-C109-42C3-A9FB-DC3A1BDF7CD7}
+		{A130E586-507C-4482-91F3-8CD09205B241} = {64E505AB-C109-42C3-A9FB-DC3A1BDF7CD7}
+		{6BC0163A-C077-4166-A92A-480F15D99F4B} = {64E505AB-C109-42C3-A9FB-DC3A1BDF7CD7}
+		{165F1F6A-3A85-4180-8371-FB04DB1C5CBD} = {64E505AB-C109-42C3-A9FB-DC3A1BDF7CD7}
+	EndGlobalSection
+EndGlobal

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using PhantomNet.Entities.EntityMarkers;
+using PhantomNet.Entities;
 
 namespace PhantomNet.Blog
 {

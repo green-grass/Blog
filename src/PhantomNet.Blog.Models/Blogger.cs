@@ -1,5 +1,5 @@
 ﻿using System;
-using PhantomNet.Entities.EntityMarkers;
+using PhantomNet.Entities;
 
 namespace PhantomNet.Blog
 {

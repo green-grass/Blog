@@ -22,7 +22,7 @@ namespace PhantomNet.Blog {
     // with the /str option, or rebuild your VS project.
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -35,10 +35,10 @@ namespace PhantomNet.Blog {
         ///    Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PhantomNet.Blog.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PhantomNet.Blog.Logic.Resources", typeof(Resources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -50,7 +50,7 @@ namespace PhantomNet.Blog {
         ///    resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -62,7 +62,7 @@ namespace PhantomNet.Blog {
         /// <summary>
         ///    Looks up a localized string similar to Article URL friendly title &apos;{0}&apos; is already taken..
         /// </summary>
-        internal static string DuplicateArticleUrlFriendlyTitle {
+        public static string DuplicateArticleUrlFriendlyTitle {
             get {
                 return ResourceManager.GetString("DuplicateArticleUrlFriendlyTitle", resourceCulture);
             }
@@ -71,7 +71,7 @@ namespace PhantomNet.Blog {
         /// <summary>
         ///    Looks up a localized string similar to Blogger URL friendly pen name &apos;{0}&apos; is already taken..
         /// </summary>
-        internal static string DuplicateBloggerUrlFriendlyPenName {
+        public static string DuplicateBloggerUrlFriendlyPenName {
             get {
                 return ResourceManager.GetString("DuplicateBloggerUrlFriendlyPenName", resourceCulture);
             }
@@ -80,7 +80,7 @@ namespace PhantomNet.Blog {
         /// <summary>
         ///    Looks up a localized string similar to Category URL friendly name &apos;{0}&apos; is already taken..
         /// </summary>
-        internal static string DuplicateCategoryUrlFriendlyName {
+        public static string DuplicateCategoryUrlFriendlyName {
             get {
                 return ResourceManager.GetString("DuplicateCategoryUrlFriendlyName", resourceCulture);
             }
@@ -89,7 +89,7 @@ namespace PhantomNet.Blog {
         /// <summary>
         ///    Looks up a localized string similar to Article URL friendly title &apos;{0}&apos; is invalid..
         /// </summary>
-        internal static string InvalidArticleUrlFriendlyTitle {
+        public static string InvalidArticleUrlFriendlyTitle {
             get {
                 return ResourceManager.GetString("InvalidArticleUrlFriendlyTitle", resourceCulture);
             }
@@ -98,7 +98,7 @@ namespace PhantomNet.Blog {
         /// <summary>
         ///    Looks up a localized string similar to Blogger URL friendly pen name &apos;{0}&apos; is invalid..
         /// </summary>
-        internal static string InvalidBloggerUrlFriendlyPenName {
+        public static string InvalidBloggerUrlFriendlyPenName {
             get {
                 return ResourceManager.GetString("InvalidBloggerUrlFriendlyPenName", resourceCulture);
             }
@@ -107,7 +107,7 @@ namespace PhantomNet.Blog {
         /// <summary>
         ///    Looks up a localized string similar to Category URL friendly name &apos;{0}&apos; is invalid..
         /// </summary>
-        internal static string InvalidCategoryUrlFriendlyName {
+        public static string InvalidCategoryUrlFriendlyName {
             get {
                 return ResourceManager.GetString("InvalidCategoryUrlFriendlyName", resourceCulture);
             }
@@ -116,7 +116,7 @@ namespace PhantomNet.Blog {
         /// <summary>
         ///    Looks up a localized string similar to Type {0} must derive from {1}&lt;{2}, {3}&gt;..
         /// </summary>
-        internal static string InvalidManagerType {
+        public static string InvalidManagerType {
             get {
                 return ResourceManager.GetString("InvalidManagerType", resourceCulture);
             }

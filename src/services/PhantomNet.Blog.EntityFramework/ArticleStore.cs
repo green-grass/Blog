@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using PhantomNet.Entities.EntityFramework;
 
 namespace PhantomNet.Blog.EntityFramework

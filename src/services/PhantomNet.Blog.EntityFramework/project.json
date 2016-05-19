@@ -1,26 +1,19 @@
-{
+﻿{
   "version": "1.0.0-*",
-  "description": "PhantomNet.Blog.EntityFramework Class Library",
-  "authors": [ "minhnguyen" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
-  "frameworks": {
-    "net451": { },
-    "dotnet5.4": {
-      "dependencies": {
-        "Microsoft.CSharp": "4.0.1-beta-23516",
-        "System.Collections": "4.0.11-beta-23516",
-        "System.Linq": "4.0.1-beta-23516",
-        "System.Runtime": "4.0.21-beta-23516",
-        "System.Threading": "4.0.11-beta-23516"
-      }
-    }
-  },
+
   "dependencies": {
-    "EntityFramework.Relational": "7.0.0-rc1-final",
-    "PhantomNet.Blog.Logic": "1.0.0-*",
+    "Microsoft.EntityFrameworkCore.Relational": "1.0.0-rc2-final",
+    "NETStandard.Library": "1.5.0-rc2-24027",
     "PhantomNet.Blog.Models": "1.0.0-*",
-    "PhantomNet.Entities.EntityFramework": "1.0.2-beta1"
+    "PhantomNet.Entities.EntityFramework": "1.0.0-*"
+  },
+
+  "frameworks": {
+    "netstandard1.5": {
+      "imports": [
+        "dnxcore50",
+        "portable-net45+win8"
+      ]
+    }
   }
 }

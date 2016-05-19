@@ -1,10 +1,10 @@
 ﻿using System;
-using Microsoft.AspNet.Http;
-using Microsoft.AspNet.Http.Internal;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using PhantomNet.Blog;
 using PhantomNet.Blog.Mvc;
 using PhantomNet.Entities;
+// TODO:: AutoMapper
 #if NET451
 using AutoMapper;
 using PhantomNet.Mvc;
